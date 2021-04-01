@@ -1,0 +1,25 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "projects": {
+    "eca-select-entities": {
+      "projectType": "library",
+      "root": "packages/select-entities",
+      "sourceRoot": "packages/select-entities/src",
+      "prefix": "main",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "packages/select-entities/tsconfig.lib.json",
+            "project": "packages/select-entities/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "packages/select-entities/tsconfig.lib.prod.json"
+            }
+          }
+        }
+      }
+    }}
+}

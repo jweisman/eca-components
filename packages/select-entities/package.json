@@ -1,0 +1,21 @@
+{
+  "name": "eca-select-entities",
+  "version": "1.0.0",
+  "main": "index.js",
+  "description": "Component to select multiple entities in Ex Libris Cloud Apps",
+  "license": "BSD-3-Clause",
+  "keywords": ["exlcloudapps"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jweisman/eca-components.git",
+    "directory": "packages/eca-select-entities"
+  },
+  "peerDependencies": {
+    "@angular/common": "^9.0.7",
+    "@angular/core": "^9.0.7",
+    "@angular/material": "^9.2.0",
+    "@angular/forms": "^9.1.0",
+    "@exlibris/exl-cloudapp-angular-lib": "0.5.0",
+    "@ngx-translate/core": "12.1.2"
+  }
+}

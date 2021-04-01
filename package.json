@@ -1,0 +1,30 @@
+{
+  "name": "eca-components",
+  "version": "1.0.0",
+  "description": "Components to be used in Ex Libris Cloud Apps",
+  "license": "BSD-3-Clause",
+  "scripts": {
+    "build": "npx --no-install ng build --prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jweisman/eca-components.git"
+  },
+  "devDependencies": {
+    "@angular/common": "^9.0.7",
+    "@angular/core": "^9.0.7",
+    "tslib": "^1.10.0",
+    "@exlibris/exl-cloudapp-angular-lib": "0.5.0",
+    "@exlibris/exl-cloudapp-base": "0.5.0",
+    "@angular/cli": "~9.0.0",
+    "ng-packagr": "^9.0.0",
+    "@angular-devkit/build-angular": "~0.900.7",
+    "@angular-devkit/build-ng-packagr": "~0.900.7",
+    "@angular/compiler": "~9.0.0",
+    "@angular/compiler-cli": "~9.0.0",
+    "@angular/material": "^9.2.0",
+    "@angular/forms": "^9.1.0",
+    "tsickle": "^0.38.1",
+    "@ngx-translate/core": "12.1.2"
+  }
+}
