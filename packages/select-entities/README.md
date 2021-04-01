@@ -49,7 +49,7 @@ Next add a list to collect selected entities, a handler for when an entity is ch
     else if (~index) this.selectedEntities.splice(index, 1);
   }
 ```
-Or a `List` of one of the entity properties:
+Or a `Set` of one of the entity properties:
 ```
   selectedEntities = new Set<string>();
 
