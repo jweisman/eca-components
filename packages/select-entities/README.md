@@ -67,6 +67,7 @@ In your _component.html_ page, add a reference to the component and the array:
 
 ## Other methods
 Both components also support the following properties/methods:
+
 **`clear`**
 Clears all selected items:
 ```typescript
