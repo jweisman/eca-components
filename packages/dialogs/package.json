@@ -1,14 +1,14 @@
 {
-  "name": "eca-select-entities",
-  "version": "1.1.0",
+  "name": "eca-dialogs",
+  "version": "1.0.0",
   "main": "index.js",
-  "description": "Component to select multiple entities in Ex Libris Cloud Apps",
+  "description": "Provides mat-dialogs according to the style guide in Ex Libris Cloud Apps",
   "license": "BSD-3-Clause",
   "keywords": ["exlcloudapps"],
   "repository": {
     "type": "git",
     "url": "https://github.com/jweisman/eca-components.git",
-    "directory": "packages/select-entities"
+    "directory": "packages/dialogs"
   },
   "peerDependencies": {
     "@angular/common": "^9.0.7",

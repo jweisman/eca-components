@@ -1,4 +1,4 @@
-<mat-list *ngIf="entities?.length>0">
+<mat-list *ngIf="items?.length>0">
   <mat-list-item>
     <mat-checkbox
     [(ngModel)]="masterChecked"
@@ -6,10 +6,10 @@
     (change)="masterChange()"
     ><b>{{'SelectEntities.CheckAll' | translate}}</b></mat-checkbox>
   </mat-list-item>
-  <mat-list-item *ngFor="let entity of entities">
-    <mat-checkbox [value]="entity"
-    [(ngModel)]="entity.checked"
-    (change)="listChange(entity, $event.checked)"
-    >{{entity.name}}</mat-checkbox>
+  <mat-list-item *ngFor="let item of items">
+    <mat-checkbox [value]="item.value"
+    [(ngModel)]="item.checked"
+    (change)="listChange(item.value, $event.checked)"
+    >{{item.value.description}}</mat-checkbox>
   </mat-list-item> 
 </mat-list>

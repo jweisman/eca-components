@@ -1,0 +1,9 @@
+<mat-radio-group
+  aria-labelledby="select-entity-label"
+  class="entity-radio-group"
+  (change)="entitySelected()"
+  [(ngModel)]="selected">
+  <mat-radio-button class="entity-radio-button" *ngFor="let entity of entities" [value]="entity">
+    {{entity.description | truncate : 200 : true}}
+  </mat-radio-button>
+</mat-radio-group>
