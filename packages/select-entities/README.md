@@ -52,12 +52,12 @@ The select entity component supports selecting a single entity. Features include
 
 Use the select entities component in your own component as follows.
 
-Add an array to collect selected entities in your _component.ts_:
+Add a variable to represent the selected entity in your _component.ts_:
 ```typescript
 selectedEntity: Entity = null;
 ```
 
-In your _component.html_ page, add a reference to the component and the array:
+In your _component.html_ page, add a reference to the component and the variable:
 ```html
 <eca-select-entity
   [(selected)]="selectedEntity"
@@ -79,13 +79,13 @@ Clears all selected items:
 ```
 
 **`count`**
-Count of entities:
+Count of displayed entities:
 ```html
+<p *ngIf="selectEntities.count == 0">Please navigate to a screen with entities.</p>
 <eca-select-entities #selectEntities
   [(selected)]="selectedEntities"
   >
 </eca-select-entities>
-<p *ngIf="selectEntities.count == 0">Please navigate to a screen with entities.</p>
 ```
 
 **`entityTypes`**
@@ -101,7 +101,7 @@ Filter the entity types to be displayed:
 **`entities$`**
 Provide an observable of entities which overrides the entities displayed on the Alma screen. 
 
-In this example, we're retrieving all of the displayed and limiting to those created by the current user:
+In this example, we're retrieving the full representation of all of the displayed entities and limiting to those created by the current user:
 _component.ts_:
 ```typescript
   entities$ = this.eventsService.entities$.pipe(
