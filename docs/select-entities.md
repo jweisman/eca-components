@@ -78,11 +78,16 @@ Clears all selected items:
 
 **`count`**
 
-Count of entities:
+Emits count of entities. Can be used to change user interface based on whether entities are displayed.
+```typescript
+entityCount = 0;
+```
+
 ```html
-<p *ngIf="selectEntities.count == 0">Please navigate to a screen with entities.</p>
+<p *ngIf="entityCount == 0">Please navigate to a screen with entities.</p>
 <eca-select-entities #selectEntities
   [(selected)]="selectedEntities"
+  (count)="entityCount=$event"
   >
 </eca-select-entities>
 ```
