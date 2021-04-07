@@ -25,7 +25,7 @@ export class SelectEntityComponent implements OnInit, OnDestroy {
     @Input() entityTypes: EntityType[];
   
     /** Count of entities */
-    count: number = 0;
+    @Output() count = new EventEmitter<number>();
 
     constructor(
       private eventsService: CloudAppEventsService,
@@ -34,6 +34,7 @@ export class SelectEntityComponent implements OnInit, OnDestroy {
     ngOnInit() {
       /* Subscribe to entities observable */
       this.subscription$ = this.entities$.subscribe(this.entitiesUpdated);
+      this.count.emit(0);
     }
 
     ngOnDestroy() {
@@ -44,7 +45,7 @@ export class SelectEntityComponent implements OnInit, OnDestroy {
       if (Array.isArray(this.entityTypes))
         entities = entities.filter(e => this.entityTypes.includes(e.type));
       this.entities = entities;
-      this.count = entities.length;
+      this.count.emit(entities.length);
       /* If different list, clear selected */
       if (entities.length == 0 || entities[0].type != this._entityType) {
         this.clear();
