@@ -1,4 +1,4 @@
-<mat-list *ngIf="items?.length>0">
+<mat-list *ngIf="items?.length>0; else noEntities">
   <mat-list-item>
     <mat-checkbox
     [(ngModel)]="masterChecked"
@@ -13,3 +13,8 @@
     >{{item.value.description}}</mat-checkbox>
   </mat-list-item> 
 </mat-list>
+<ng-template #noEntities>
+  <div id="emptyList">
+    <span class="uxf-icon uxf-list" style="font-size: 3em;"></span>
+  </div>
+</ng-template>

@@ -23,7 +23,7 @@ export interface ConfirmDialogData extends DialogData {
 export class ConfirmDialog extends BaseDialog {
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: Partial<ConfirmDialogData>,
+    @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogData,
     public translate: TranslateService,
   ) {
     super(data,translate);

@@ -6,8 +6,8 @@ import { BaseDialog } from './dialog-base.component';
 import { DEFAULT_DIALOG_OPTIONS, DialogData } from "../dialog";
 
 export interface PromptDialogData extends DialogData {
-  prompt: string;
-  val: string;
+  prompt?: string;
+  val?: string;
 }
 
 @Component({
@@ -33,7 +33,7 @@ export class PromptDialog extends BaseDialog {
     Object.assign(DEFAULT_DIALOG_OPTIONS, { prompt: '', val: '' });
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: Partial<PromptDialogData>,
+    @Inject(MAT_DIALOG_DATA) public data: PromptDialogData,
     public translate: TranslateService,
     public dialogRef: MatDialogRef<PromptDialog>
   ) {

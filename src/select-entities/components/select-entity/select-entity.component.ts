@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from "@angular/core";
-import { CloudAppEventsService, Entity, EntityType } from "@exlibris/exl-cloudapp-angular-lib";
+import { CloudAppEventsService } from '@exlibris/exl-cloudapp-angular-lib';
+import { Entity, EntityType } from '@exlibris/exl-cloudapp-angular-lib';
 import { Subscription } from 'rxjs';
 
 @Component({

@@ -1,7 +1,0 @@
-{
-  "extends": "../../tsconfig.prod.json",
-  "angularCompilerOptions": {
-    /* Support Partial<> https://github.com/angular/angular/issues/20351 */    
-    "strictMetadataEmit": false
-  }
-}

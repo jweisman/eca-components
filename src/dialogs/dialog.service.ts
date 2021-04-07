@@ -1,9 +1,10 @@
 import { Injectable, Type } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { BaseDialog } from './components/dialog-base.component';
 import { ConfirmDialog, ConfirmDialogData } from './components/confirm.component';
 import { DialogType } from './dialog';
 import { PromptDialog, PromptDialogData } from './components/prompt.component';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +15,26 @@ export class DialogService {
     private dialog: MatDialog
   ) {}
 
-  confirm(data: Partial<ConfirmDialogData>) {
+  /** Confirm dialog */
+  confirm(data: ConfirmDialogData): Observable<boolean> {
     return this.dialog.open(ConfirmDialog, {
       data: data,
       autoFocus: data.type == DialogType.OK
-    })
+    }).afterClosed();
   }
 
-  prompt(data: Partial<PromptDialogData>): MatDialogRef<BaseDialog>;
-  prompt(component: Type<BaseDialog>, data: Partial<PromptDialogData>): MatDialogRef<BaseDialog>;
-  prompt(componentOrData: Type<BaseDialog> | Partial<PromptDialogData>, data?: Partial<PromptDialogData>) {
+  /** Alert dialog */
+  alert(data: ConfirmDialogData): Observable<boolean> {
+    return this.dialog.open(ConfirmDialog, {
+      data: Object.assign({}, data, { type: DialogType.OK }),
+      autoFocus: true
+    }).afterClosed();
+  }
+
+  /** Prompt dialog */
+  prompt(data: PromptDialogData): Observable<any>;
+  prompt(component: Type<BaseDialog>, data: PromptDialogData): Observable<any>;
+  prompt(componentOrData: Type<BaseDialog> | PromptDialogData, data?: PromptDialogData): Observable<any> {
     let component: Type<BaseDialog>;
     if (componentOrData instanceof Type) {
       component = componentOrData;
@@ -33,6 +44,7 @@ export class DialogService {
     }
     return this.dialog.open(component, {
       data: data,
-    });
+      autoFocus: false,
+    }).afterClosed();
   }
 }

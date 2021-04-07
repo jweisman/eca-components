@@ -13,7 +13,7 @@ export class BaseDialog {
   defaultOptions = DEFAULT_DIALOG_OPTIONS;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: Partial<DialogData>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
     public translate: TranslateService,
   ) {}
 

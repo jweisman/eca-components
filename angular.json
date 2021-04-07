@@ -2,41 +2,21 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "projects": {
-    "eca-select-entities": {
+    "main": {
       "projectType": "library",
-      "root": "packages/select-entities",
-      "sourceRoot": "packages/select-entities/src",
+      "root": "./",
+      "sourceRoot": "./src",
       "prefix": "main",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "packages/select-entities/tsconfig.lib.json",
-            "project": "packages/select-entities/ng-package.json"
+            "tsConfig": "./tsconfig.json",
+            "project": "./ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "packages/select-entities/tsconfig.lib.prod.json"
-            }
-          }
-        }
-      }
-    },
-    "eca-dialogs": {
-      "projectType": "library",
-      "root": "packages/dialogs",
-      "sourceRoot": "packages/dialogs/src",
-      "prefix": "main",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "packages/dialogs/tsconfig.lib.json",
-            "project": "packages/dialogs/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "packages/dialogs/tsconfig.lib.prod.json"
+              "tsConfig": "./tsconfig.prod.json"
             }
           }
         }
