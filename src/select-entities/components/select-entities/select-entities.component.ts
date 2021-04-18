@@ -23,8 +23,13 @@ export class SelectEntitiesComponent implements OnInit, OnDestroy {
   @Input() entities$ = this.eventsService.entities$;
   subscription$: Subscription;
 
+  private _selected = new Array<Entity>();
   /** Selected entities */
-  @Input() selected = new Array<Entity>();
+  @Input() set selected(value: Array<Entity>) {
+    this._selected = value;
+    this.items = this.items.map(i=>({ value: i.value, checked: this.isEntitySelected(i.value) }));
+    this.determineMasterValue();
+  };
   @Output() selectedChange = new EventEmitter<Entity[]>();
 
   /** Supported Entity Types */
@@ -54,9 +59,9 @@ export class SelectEntitiesComponent implements OnInit, OnDestroy {
   }
 
   entitiesUpdated = (entities: Entity[]) => {
-    if (Array.isArray(this.entityTypes))
+    if (Array.isArray(this.entityTypes)) {
       entities = entities.filter(e=>this.entityTypes.includes(e.type));
-
+    }
     this.count.emit(entities.length);
     /* If different list, clear selected */
     if (entities.length == 0 || entities[0].type != this._entityType) {
@@ -80,13 +85,13 @@ export class SelectEntitiesComponent implements OnInit, OnDestroy {
   }
 
   entitySelected(entity: Entity, checked: boolean) {
-    const index = this.selected.findIndex(e=>entity.id===e.id)
-    if (checked && !~index) this.selected.push(entity);
-    else if (!checked && ~index) this.selected.splice(index, 1);
-    this.selectedChange.emit(this.selected);
+    const index = this._selected.findIndex(e=>entity.id===e.id)
+    if (checked && !~index) this._selected.push(entity);
+    else if (!checked && ~index) this._selected.splice(index, 1);
+    this.selectedChange.emit(this._selected);
   }
 
-  private isEntitySelected = (entity: Entity) => this.selected.some(e=>entity.id===e.id);
+  private isEntitySelected = (entity: Entity) => this._selected.some(e=>entity.id===e.id);
 
   private determineMasterValue() {
     const checked_count = Object.values(this.items).filter(i=>i.checked).length;
@@ -96,8 +101,8 @@ export class SelectEntitiesComponent implements OnInit, OnDestroy {
 
   /** Clear all selected values */
   clear() {
-    this.selected = [];
-    this.selectedChange.emit(this.selected);
+    this._selected = [];
+    this.selectedChange.emit(this._selected);
     Object.values(this.items).forEach(b => b.checked = false);
     this.determineMasterValue();
   }
