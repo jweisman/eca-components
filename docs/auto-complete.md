@@ -27,9 +27,9 @@ In eager-loading mode, the component fetches all the data when loaded. If the ID
 
 ![Auto-Complete](./screenshots/auto-complete-data.png)
 
-There are two options for eager loading: built-in and custom. The built-in method uses the Alma APIs and standard paging mechanism to retrieve all the options. The custom allows you to handle the API calls and provide the data to the component.
+There are two methods for eager loading: built-in and custom. The built-in method uses the Alma APIs and standard paging mechanism to retrieve all the options. The custom method allows you to handle the API calls and provide the data to the component.
 
-To use **built-in** loading, simply provide the URL of the relevant Alma API:
+To use the **built-in** method, simply provide the URL of the relevant Alma API:
 ```html
 <eca-auto-complete
   [data]='{ request: "/conf/libraries" }'
@@ -53,7 +53,7 @@ getProxies: GetAllOptionsSettings = {
 ></eca-auto-complete>
 ```
 
-**Custom** loading allows you to control the API calls and pass the result to the control for display. This supports use cases where you wish to limit the results of the raw API. To use custom loading, provide a function which returns an Observable array of options. In this example, we're retrieving libraries and limiting by campus:
+The **custom** method allows you to control the API calls and pass the result to the component for display. This supports use cases where you wish to limit the results of the raw API. To use custom loading, provide a function which returns an Observable array of options. In this example, we're retrieving libraries and limiting by campus:
 ```ts
 getLibraries = campus: Observable<Option[]> => {
   return this.restService.call('/conf/libraries')
