@@ -6,9 +6,7 @@ import { DialogType } from './dialog';
 import { PromptDialog, PromptDialogData } from './components/prompt.component';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class DialogService {
 
   constructor( 
