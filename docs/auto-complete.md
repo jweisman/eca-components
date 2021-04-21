@@ -144,19 +144,19 @@ searchUsers = (q: string): Observable<Option[]> => {
 </eca-auto-complete>
 ```
 
-**`id`**`: string`
+**`id: string`**
 Recommended as it allows the data to be cached.
 
-**`lazy`**`: (val: string) => Observable<Array<Option>>`
+**`lazy: (val: string) => Observable<Array<Option>>`**
 A function which searches a data source and return an array of options. Alternative to `data`.
 
-**`data`**`: (() => Observable<Array<Option>>) | GetAllOptionsSettings`
+**`data: (() => Observable<Array<Option>>) | GetAllOptionsSettings`**
 A function which return an array of options, or [`GetAllOptionsSettings`](#GetAllOptionsSettings) to use the built-in loading. Alternative to `lazy`.
 
-**`control`**`: FormControl`
+**`control: FormControl`**
 A form control which is updated with the value. Can be used in Reactive Forms.
 
-**`onOptionSelected`**`: EventEmitter`
+**`onOptionSelected: EventEmitter`**
 Event when a value is selected
 
 ```html
@@ -172,21 +172,21 @@ selected(val) {
 }
 ```
 
-**`label`**`: string`
+**`label: string`**
 A string of text or translation key to be used as the field label. Default "Select one"
 
-**`placeHolder`**`: string`
+**`placeHolder: string`**
 A string of text or translation key to be used as the field place holder. Default "Type to search..."
 
 
 #### GetAllOptionsSettings
-**`request`**`: Request | string`
+**`request: Request | string`**
 URL for the API or a full [`CloudAppRestService Request`](https://developers.exlibrisgroup.com/cloudapps/docs/api/rest-service/#Request)
 
-**`name`**`: (obj: any) => string`
+**`name: (obj: any) => string`**
 Function which accepts the full entity and returns the name to be used. Default `(obj: any) => obj.name`
 
-**`value`**`: (obj: any) => string`
+**`value: (obj: any) => string`**
 Function which accepts the full entity and returns the value to be used. Default `(obj: any) => obj`
 
 ### Methods
