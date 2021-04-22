@@ -32,33 +32,47 @@ Inject the service into your component's constructor:
 
 ### Alert
 ```typescript
-  this.dialog.alert({ title: 'Watch out!', text: 'Dialog.Alert' })
-  .subscribe();
+/* Simple */
+this.dialog.alert('Watch out!')
+.subscribe();
+
+/* Full */
+this.dialog.alert({ title: 'Watch out!', text: 'Dialog.Alert', ok: 'Okey-dokey' })
+.subscribe();
 ```
 
 ![Alert Dialog](./screenshots/dialog-alert.png)
 
 ### Confirm
 ```typescript
-  this.dialog.confirm({ text: 'Dialog.Confirm' })
-  .subscribe(result => {
-    if (!result) {
-      this.result = 'nope';
-    } else {
-      this.result = 'okey-dokey';
-    }
-  });
+/* Simple */
+this.dialog.confirm('Dialog.Confirm')
+.subscribe(result => console.log(result));
+
+/* Full */
+this.dialog.confirm({ text: 'Dialog.Confirm', , ok: 'Okey-dokey', cancel: 'No way Jose' })
+.subscribe(result => {
+  if (!result) {
+    this.result = 'nope';
+  } else {
+    this.result = 'okey-dokey';
+  }
+});
 ```
 
 ![Confirm Dialog](./screenshots/dialog-confirm.png)
 
 ### Prompt
 ```typescript
-  this.dialog.prompt({ text: 'Dialog.Prompt', prompt: 'Dialog.PromptField' })
-  .subscribe(result => {
-    if (!result) return;
-    this.result = `Hello there ${result}`;
-  });
+/* Simple */
+this.dialog.prompt('Dialog.Prompt')
+.subscribe(result => console.log(result));
+
+this.dialog.prompt({ text: 'Dialog.Prompt', prompt: 'Dialog.PromptField' })
+.subscribe(result => {
+  if (!result) return;
+  this.result = `Hello there ${result}`;
+});
 ```
 
 ![Prompt Dialog](./screenshots/dialog-prompt.png)
