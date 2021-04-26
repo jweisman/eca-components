@@ -1,3 +1,3 @@
-export * from './select-entities';
-export * from './dialogs';
-export * from './auto-complete';
+export * from './select-entities/index';
+export * from './dialogs/index';
+export * from './auto-complete/index';
