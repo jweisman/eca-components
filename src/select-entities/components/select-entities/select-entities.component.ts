@@ -48,7 +48,8 @@ export class SelectEntitiesComponent implements OnInit, OnDestroy {
     this.subscription$ = this.entities$.subscribe(this.entitiesUpdated);
     /* Once app translations are loaded, merge with component strings */
     this.translate.getTranslation('en').pipe(take(1)).subscribe(() => {
-      Object.entries(i18n).forEach(([k, v]) => this.translate.setTranslation(k, v, true));
+      /* On the next tick otherwise template won't update */
+      setTimeout(() => Object.entries(i18n).forEach(([k, v]) => this.translate.setTranslation(k, v, true)));
     });
     this.masterChecked = false;
     this.count.emit(0);

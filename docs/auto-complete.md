@@ -23,7 +23,7 @@ import { AutoCompleteModule } from 'eca-components';
 ## Usage
 
 ### Eager Loading
-In eager-loading mode, the component fetches all the data when loaded. If the ID attribute is provided, the data is cached as long as the app is loaded.
+In eager-loading mode, the component fetches all the data when loaded. The data is cached as long as the app is loaded (if an `id` is provided or if using the built-in loading method).
 
 ![Auto-Complete](./screenshots/auto-complete-data.png)
 
@@ -33,7 +33,6 @@ To use the **built-in** method, simply provide the URL of the relevant Alma API:
 ```html
 <eca-auto-complete
   [data]='{ request: "/conf/libraries" }'
-  id='libraries'
 ></eca-auto-complete>
 ```
 

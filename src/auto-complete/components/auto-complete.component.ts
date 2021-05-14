@@ -18,7 +18,9 @@ export class AutoCompleteComponent implements OnInit {
   @Output() onOptionSelected = new EventEmitter();
   @Input() control = new FormControl();
   @Input() lazy: (val: string) => Observable<Array<Option>>;
-  @Input() data: (() => Observable<Array<Option>>) | GetAllOptionsSettings;
+  @Input() set data(data: (() => Observable<Array<Option>>) | GetAllOptionsSettings) {
+    this.loadData(data);
+  }
   @Input() label = 'AutoComplete.Select';
   @Input() placeholder = 'AutoComplete.Type';
   @Input() id: string;
@@ -32,25 +34,38 @@ export class AutoCompleteComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    /* Once app translations are loaded, merge with component strings */
-    this.translate.getTranslation('en').pipe(take(1)).subscribe(() => {
-      Object.entries(i18n).forEach(([k, v]) => this.translate.setTranslation(k, v, true));
-    });
-    if (this.data) this.loadData();
-    else if (this.lazy) this.loadLazy();
+    if (this.lazy) this.loadLazy();
   }
 
-  loadData() {
+  ngAfterViewInit() {
+    /* Once app translations are loaded, merge with component strings */
+    this.translate.getTranslation('en').pipe(take(1)).subscribe(() => {
+      /* On the next tick otherwise template won't update */
+      setTimeout(() => Object.entries(i18n).forEach(([k, v]) => this.translate.setTranslation(k, v, true)));
+    });
+  }
+
+  loadData(data: (() => Observable<Array<Option>>) | GetAllOptionsSettings) {
+    const requestUrl = isGetAllOptions(data) && 
+      (
+        typeof data.request == 'string'
+        ? data.request
+        : data.request.url
+      );
     if (this.id && this.service.options[this.id]) {
       this.options = this.service.options[this.id];
       this.subscribeData();
+    } else if (requestUrl && this.service.options[requestUrl]) {
+      this.options = this.service.options[requestUrl];
+      this.subscribeData();
     } else {
-      const get = isGetAllOptions(this.data)
-        ? this.service.getAllOptions(this.data)
-        : this.data();
+      const get = isGetAllOptions(data)
+        ? this.service.getAllOptions(data)
+        : data();
       get.pipe(
         tap(results => {
           if (this.id) this.service.options[this.id] = results;
+          else if (requestUrl) this.service.options[requestUrl] = results;
         })
       ).subscribe(results => {
         this.options = results;
@@ -79,7 +94,7 @@ export class AutoCompleteComponent implements OnInit {
 
   displayFn = (value?: any): string => {
     const option = this.filteredOptions && this.filteredOptions.find(o => isEqual(o.value, value) );
-    return option ? option.name : '';
+    return option ? option.name : value;
   }
 
   private _filterOptions(value: string): Option[] {

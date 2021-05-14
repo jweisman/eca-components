@@ -7,7 +7,7 @@ import { DEFAULT_DIALOG_OPTIONS, DialogData } from "../dialog";
 
 export interface PromptDialogData extends DialogData {
   prompt?: string;
-  val?: string;
+  val?: any;
 }
 
 @Component({
