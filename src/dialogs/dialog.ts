@@ -15,9 +15,3 @@ export enum DialogType {
   OK = 'ok',
   OK_CANCEL = 'ok-cancel',
 }
-
-export const DEFAULT_DIALOG_OPTIONS: DialogData = {
-  cancel: 'Cancel',
-  ok: 'OK',
-  type: DialogType.OK_CANCEL
-}

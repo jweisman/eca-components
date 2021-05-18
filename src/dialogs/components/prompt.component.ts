@@ -3,7 +3,7 @@ import { Component } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslateService } from "@ngx-translate/core";
 import { BaseDialog } from './dialog-base.component';
-import { DEFAULT_DIALOG_OPTIONS, DialogData } from "../dialog";
+import { DialogData } from "../dialog";
 
 export interface PromptDialogData extends DialogData {
   prompt?: string;
@@ -29,8 +29,6 @@ export interface PromptDialogData extends DialogData {
 })
 export class PromptDialog extends BaseDialog {
   @ViewChild('input') inputElement: ElementRef;
-  defaultOptions: PromptDialogData = 
-    Object.assign(DEFAULT_DIALOG_OPTIONS, { prompt: '', val: '' });
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: PromptDialogData,
