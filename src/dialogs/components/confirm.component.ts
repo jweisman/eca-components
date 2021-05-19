@@ -16,8 +16,8 @@ export interface ConfirmDialogData extends DialogData {
     <p>{{text}}</p>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
-    <button mat-flat-button color="secondary" *ngIf="data.type=='ok-cancel'" mat-dialog-close>{{data.cancel | translate}}</button>
-    <button mat-flat-button color="secondary" [mat-dialog-close]="true" cdkFocusInitial>{{data.ok | translate}}</button>
+    <button mat-flat-button color="secondary" *ngIf="data.type=='ok-cancel'" mat-dialog-close>{{data.cancel || 'Cancel' | translate}}</button>
+    <button mat-flat-button color="secondary" [mat-dialog-close]="true" cdkFocusInitial>{{data.ok || 'OK' | translate}}</button>
   </mat-dialog-actions>`
 })
 export class ConfirmDialog extends BaseDialog {

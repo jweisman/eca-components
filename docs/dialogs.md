@@ -111,8 +111,8 @@ export interface CustomDialogResult {
     </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
-    <button mat-flat-button color="secondary" *ngIf="data.type=='ok-cancel'" mat-dialog-close>{{data.cancel | translate}}</button>
-    <button mat-flat-button color="secondary" [mat-dialog-close]="result" cdkFocusInitial>{{data.ok | translate}}</button>
+    <button mat-flat-button color="secondary" mat-dialog-close>{{'Cancel' | translate}}</button>
+    <button mat-flat-button color="secondary" [mat-dialog-close]="result" cdkFocusInitial>{{'OK' | translate}}</button>
   </mat-dialog-actions>`,
   styles: [
     '.mat-form-field { display: block; }'

@@ -30,8 +30,8 @@ export class DialogService {
       ? { text: dataOrText }
       : dataOrText;
     return this.dialog.open(ConfirmDialog, {
-      data: data,
-      autoFocus: data.type == DialogType.OK
+      data: Object.assign({}, data, { type: DialogType.OK_CANCEL }),
+      autoFocus: false
     }).afterClosed();
   }
 
@@ -91,7 +91,7 @@ export class DialogService {
       data = componentOrDataOrText;
     }
     return this.dialog.open(component, {
-      data: data,
+      data: Object.assign({}, data, { type: DialogType.OK_CANCEL }),
       autoFocus: false,
     }).afterClosed();
   }
