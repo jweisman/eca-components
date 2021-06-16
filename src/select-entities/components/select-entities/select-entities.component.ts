@@ -36,7 +36,7 @@ export class SelectEntitiesComponent implements OnInit, OnDestroy {
   @Input() entityTypes: EntityType[];
 
   /** Count of entities */
-  @Output() count = new EventEmitter<number>();
+  @Output() count = new EventEmitter<number>(true);
 
   constructor(
     private translate: TranslateService,
@@ -52,7 +52,6 @@ export class SelectEntitiesComponent implements OnInit, OnDestroy {
       setTimeout(() => Object.entries(i18n).forEach(([k, v]) => this.translate.setTranslation(k, v, true)));
     });
     this.masterChecked = false;
-    this.count.emit(0);
   }
 
   ngOnDestroy() {
