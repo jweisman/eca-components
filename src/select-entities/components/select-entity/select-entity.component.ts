@@ -25,7 +25,7 @@ export class SelectEntityComponent implements OnInit, OnDestroy {
     @Input() entityTypes: EntityType[];
   
     /** Count of entities */
-    @Output() count = new EventEmitter<number>();
+    @Output() count = new EventEmitter<number>(true);
 
     constructor(
       private eventsService: CloudAppEventsService,
@@ -34,7 +34,6 @@ export class SelectEntityComponent implements OnInit, OnDestroy {
     ngOnInit() {
       /* Subscribe to entities observable */
       this.subscription$ = this.entities$.subscribe(this.entitiesUpdated);
-      this.count.emit(0);
     }
 
     ngOnDestroy() {

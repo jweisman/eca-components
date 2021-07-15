@@ -39,10 +39,12 @@ export class PromptDialog extends BaseDialog {
   }
 
   ngAfterViewInit() {
-    setTimeout(()=>{
-      const elem = this.inputElement.nativeElement as HTMLInputElement;
-      elem.focus();
-      elem.select();
+    setTimeout(() => {
+      if (this.inputElement != undefined) {
+        const elem = this.inputElement.nativeElement as HTMLInputElement;
+        elem.focus();
+        elem.select();
+      }
     });
   }
 }
