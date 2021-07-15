@@ -9,9 +9,15 @@ $ npm install eca-components --save
 
 Then add the relevant modules to your `app.module.ts` as shown in the README for each component below.
 
-## Componentents
+## Components
 The following components are available:
 
 * **[Select Entities](./docs/select-entities.md)**: Select entities from the visible screen in Alma
 * **[Dialogs](./docs/dialogs.md)**: Display dialogs according to the style guide
 * **[Auto-Complete](./docs/auto-complete.md)**: Defined and lazy data auto-complete component
+
+## Versions
+| Cloud Apps Components | Cloud App SDK | Angular |
+| ------------- | ------------- | --- |
+| < 1.4  | < 1.4  | 9.* |
+| >= 1.4 | >= 1.4  | 11.* |
