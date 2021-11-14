@@ -59,7 +59,7 @@ In your _component.html_ page, add a reference to the component and the array:
 <eca-select-entity
   [(selected)]="selectedEntity"
   >
-</eca-select-entities>
+</eca-select-entity>
 ```
 
 ## Other methods
