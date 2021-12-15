@@ -103,6 +103,18 @@ Filter the entity types to be displayed:
 </eca-select-entities>
 ```
 
+**`truncate`**
+
+Truncate the entity list to one line each:
+```html
+<eca-select-entities #selectEntities
+  [(selected)]="selectedEntities"
+  [truncate]="true"
+  >
+</eca>
+```
+From v1.4.1
+
 **`entities$`**
 
 Provide an observable of entities which overrides the entities displayed on the Alma screen. 

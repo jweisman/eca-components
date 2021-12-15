@@ -10,7 +10,14 @@
     <mat-checkbox [value]="item.value"
     [(ngModel)]="item.checked"
     (change)="listChange(item.value, $event.checked)"
-    >{{item.value.description}}</mat-checkbox>
+    >
+      <span 
+        [attr.title]="truncate ? item.value.description : null" 
+        [ngClass]="{'truncate': truncate}"
+      >
+      {{item.value.description}}
+      </span>
+    </mat-checkbox>
   </mat-list-item> 
 </mat-list>
 <ng-template #noEntities>

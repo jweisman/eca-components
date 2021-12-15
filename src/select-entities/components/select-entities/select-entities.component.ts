@@ -38,6 +38,9 @@ export class SelectEntitiesComponent implements OnInit, OnDestroy {
   /** Count of entities */
   @Output() count = new EventEmitter<number>(true);
 
+  /** Truncate entity text to one line */
+  @Input() truncate: boolean = false;
+
   constructor(
     private translate: TranslateService,
     private eventsService: CloudAppEventsService,
