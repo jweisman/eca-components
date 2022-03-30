@@ -3,7 +3,10 @@
   class="entity-radio-group"
   (change)="entitySelected()"
   [(ngModel)]="selected">
-  <mat-radio-button class="entity-radio-button" *ngFor="let entity of entities" [value]="entity">
+  <mat-radio-button class="entity-radio-button" *ngFor="let entity of entities; index as i" [value]="entity">
+    <span *ngIf="lineNumbers">
+    {{i+1}}. 
+    </span>
     <span 
     [attr.title]="truncate ? entity.description : null" 
     [ngClass]="{'truncate': truncate}"

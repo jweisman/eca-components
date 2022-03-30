@@ -30,6 +30,9 @@ export class SelectEntityComponent implements OnInit, OnDestroy {
     /** Truncate entity text to one line */
     @Input() truncate: boolean = false;
 
+    /** Add line numbers to entity list */
+    @Input() lineNumbers: boolean = false;
+
     constructor(
       private eventsService: CloudAppEventsService,
     ) { }

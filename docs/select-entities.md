@@ -115,6 +115,18 @@ Truncate the entity list to one line each:
 ```
 From v1.4.1
 
+**`lineNumbers`**
+
+Add line numbers to the entity list:
+```html
+<eca-select-entities #selectEntities
+  [(selected)]="selectedEntities"
+  [lineNumbers]="true"
+  >
+</eca>
+```
+From v1.4.2
+
 **`entities$`**
 
 Provide an observable of entities which overrides the entities displayed on the Alma screen. 
