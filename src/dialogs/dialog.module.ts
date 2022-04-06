@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ConfirmDialog } from './components/confirm.component';
 import { PromptDialog } from './components/prompt.component';
@@ -15,6 +16,7 @@ import { DialogService } from './dialog.service';
     MaterialModule,
     FormsModule,
     TranslateModule,
+    BrowserAnimationsModule,
   ],
   declarations: [
     BaseDialog,
